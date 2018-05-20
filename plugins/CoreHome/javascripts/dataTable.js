@@ -719,6 +719,8 @@ $.extend(DataTable.prototype, UIControl.prototype, {
             }
 
             $limitSelect.material_select();
+
+            $('.limitSelection ul', domElem).attr('title', '');
         }
         else {
             $('.limitSelection', domElem).hide();
