@@ -145,9 +145,9 @@ var broadcast = {
             broadcast.currentHashUrl = hashUrl;
             broadcast.currentPopoverParameter = popoverParam;
 
-            if (popoverParamUpdated && popoverParam == '') {
+            if (popoverParamUpdated) {
                 Piwik_Popover.close();
-            } else if (popoverParamUpdated) {
+            } else {
                 var popoverParamParts = popoverParam.split(':');
                 var handlerName = popoverParamParts[0];
                 popoverParamParts.shift();
@@ -452,6 +452,9 @@ var broadcast = {
             // make sure it doesn't change, we have to manipulate the url encoding a bit.
             popover = encodeURIComponent(popover);
             popover = popover.replace(/%/g, '\$');
+        } else if ($location.search('popover')) {
+            window.history.back();
+            return;
         }
 
         if ('' == value || 'undefined' == typeof value) {
